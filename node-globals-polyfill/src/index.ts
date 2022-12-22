@@ -58,9 +58,9 @@ export function NodeGlobalsPolyfillPlugin({
                 polyfills.push(path.resolve(__dirname, '../_buffer.js'))
             }
             if (initialOptions.inject) {
-                initialOptions.inject.push(...polyfills)
+                initialOptions.inject = Array.from(new Set([...initialOptions.inject, ...polyfills]))
             } else {
-                initialOptions.inject = [...polyfills]
+                initialOptions.inject = Array.from(new Set([...polyfills]))
             }
         },
     }
